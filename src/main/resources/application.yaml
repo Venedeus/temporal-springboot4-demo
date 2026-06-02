@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: temporal-springboot4-demo
+
+    temporal:
+      connection:
+        target: localhost:7233
+      namespace: default
+
+    workers-auto-discovery:
+      packages:
+        - "dev.shvetsov.temporal.workflows"
+        - "dev.shvetsov.temporal.activities"
+
+    workers:
+      - name: banking-worker
+        task-queue: BANKING_TASK_QUEUE
+
+server:
+  port: 8080
+
+logging:
+  level:
+    dev.shvetsov.temporal: DEBUG
+    io.temporal: INFO
